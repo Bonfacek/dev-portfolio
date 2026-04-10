@@ -56,96 +56,105 @@ const Header: React.FC<HeaderProps> = ({ activeSection: initialSection }) => {
         }
     };
 
-    return (
-        <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg' 
+return (
+    <header className={`flex flex-row top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg'
           : 'bg-transparent'
-      }`} >
-        <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
+      }`}>
+        <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
 
-                {/* Logo */}
-             <div className="cursor-pointer group"
-                onClick={() => scrollToSection('home')}
-            >
-                <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                &lt;PR/&gt;
-                </span>
-                <span className="ml-2 text-gray-700 dark:text-gray-300 font-semibold">
-                Portfolio
-                </span>
+          {/* Logo */}
+          <div
+            className="cursor-pointer font-semibold text-gray-700 dark:text-gray-300 text-lg"
+            onClick={() => scrollToSection('home')}
+          >
+            ~Karanis
           </div>
-                {/* Desktop Menu */}
-                <div className="hidden md:flex space-x-8">
-                    {navitems.map((item) => (
-                        <button
-                            key={item.name}
-                            onClick={() => scrollToSection(item.href.substring(1))}
-                            className={`text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors ${
-                                activeSection === item.href.substring(1) ? 'text-blue-500 dark:text-blue-400 font-semibold' : ''
-                            }`}
-                        >
-                            {item.name}
-                        </button>
-                    ))}
-                    <button
-                        onClick={toggleDarkMode}
-                        className="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-                    >
-                        {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-                    </button>
-                </div>
-                {/* Mobile Menu Button */}
-                <div className="md:hidden">
-                    <button
-                        onClick={toggleMenu}
-                        className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
-                    >
-                        <span className="sr-only">Open main menu</span>
-                        {isMenuOpen ? (
-                            <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        ) : (
-                            <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                        )}
-                    </button>
-                </div>              {/* Mobile Menu */}     
-                {isMenuOpen && (
-                    <div className="absolute top-16 left-0 w-full bg-white dark:bg-gray-900 shadow-lg">
-                        <div className="flex flex-col items-center py-4 space-y-4">
-                            {navitems.map((item) => (
-                                <button
-                                    key={item.name}
-                                    onClick={() => {
-                                        scrollToSection(item.href.substring(1));
-                                        setIsMenuOpen(false);
-                                    }}
-                                    className={`text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors ${
-                                        activeSection === item.href.substring(1) ? 'text-blue-500 dark:text-blue-400 font-semibold' : ''
-                                    }`}
-                                >
-                                    {item.name}
-                                </button>
-                            ))}
-                            <button
-                                onClick={toggleDarkMode}
-                                className="mt-2 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-                            >
-                                {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-                            </button>
-                        </div>
-                    </div>
-                )}
 
-            </div>
+          {/* Desktop Links */}
+          <div className="hidden md:flex items-center gap-8">
+            {navitems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className={`transition-colors text-sm font-medium ${
+                  activeSection === item.href.substring(1)
+                    ? 'text-blue-500 dark:text-blue-400 font-bold'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400'
+                }`}
+                onClick={(e) => {
+                  e.preventDefault()
+                  scrollToSection(item.href.substring(1))
+                  setActiveSection(item.href.substring(1))
+                }}
+              >
+                {item.name}
+              </a>
+            ))}
+            <button
+              onClick={toggleDarkMode}
+              className="ml-2 px-3 py-1.5 rounded-full text-sm bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+            >
+              {isDarkMode ? '☀️ Light' : '🌙 Dark'}
+            </button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button
+              onClick={toggleMenu}
+              className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none"
+            >
+              <span className="sr-only">Open main menu</span>
+              {isMenuOpen ? (
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
+
         </nav>
-      </header>
 
-    );
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 shadow-lg">
+            <div className="flex flex-col items-center gap-4 py-6 px-4">
+              {navitems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className={`text-sm font-medium transition-colors ${
+                    activeSection === item.href.substring(1)
+                      ? 'text-blue-500 dark:text-blue-400 font-bold'
+                      : 'text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400'
+                  }`}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    scrollToSection(item.href.substring(1))
+                    setActiveSection(item.href.substring(1))
+                    setIsMenuOpen(false)
+                  }}
+                >
+                  {item.name}
+                </a>
+              ))}
+              <button
+                onClick={toggleDarkMode}
+                className="mt-2 px-3 py-1.5 rounded-full text-sm bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+              >
+                {isDarkMode ? '☀️ Light' : '🌙 Dark'}
+              </button>
+            </div>
+          </div>
+        )}
+      </header>
+  );
 };
 
 export default Header;
