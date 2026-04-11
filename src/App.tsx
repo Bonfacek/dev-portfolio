@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
+import Project from './components/Project';
+import Contact from './components/Contact';
+import Footer from './components/footer'; 
 import './App.css';
 
 function App() {
@@ -36,7 +39,9 @@ function App() {
       <Header activeSection={activeSection} />
       <Hero />
       <About />
-      
+      <Project />
+      <Contact />
+      <Footer />      
     </div>
   );
 }
