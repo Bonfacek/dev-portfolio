@@ -1,6 +1,7 @@
 // App.tsx
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
+import Hero from './components/Hero';
 import './App.css';
 
 function App() {
@@ -32,6 +33,8 @@ function App() {
   return (
     <div className="bg-black dark:bg-black-900">
       <Header activeSection={activeSection} />
+      <Hero />
+      
     </div>
   );
 }
