@@ -4,9 +4,9 @@ const Hero: React.FC = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center bg-gradient-to-r from-black via-green-950 to-black px-4 lg:px-8"
+      className="min-h-screen flex items-center bg-linear-to-r from-black via-green-800 to-black px-4 lg:px-0"
     >
-      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl mx-auto gap-12">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl mx-auto gap-8">
 
         {/* Left — Text */}
         <div className="flex flex-col items-start max-w-xl">

@@ -58,7 +58,7 @@ return (
           ? ' dark:bg-gray-900/90 backdrop-blur-md shadow-lg'
           : 'bg-transparent'
       }`}>
-        <nav className="mx-auto px-4 lg:px-8 flex items-center justify-between h-20 bg-linear-to-r from-black via-green-800 to-black">
+        <nav className="mx-auto px-4 lg:px-8 flex items-center justify-between h-20 bg-linear-to-r from-black via-green-600 to-black">
 
           {/* Logo */}
           <div

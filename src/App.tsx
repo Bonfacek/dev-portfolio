@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import About from './components/About';
 import './App.css';
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
     <div className="bg-black dark:bg-black-900">
       <Header activeSection={activeSection} />
       <Hero />
+      <About />
       
     </div>
   );
