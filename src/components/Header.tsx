@@ -45,10 +45,6 @@ const Header: React.FC<HeaderProps> = ({ activeSection: initialSection }) => {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
-
-    const toggleDarkMode = () => {
-        setIsDarkMode(!isDarkMode);
-    };
     const scrollToSection = (sectionid: string) => {
         const section = document.getElementById(sectionid);
         if (section) {
@@ -57,31 +53,31 @@ const Header: React.FC<HeaderProps> = ({ activeSection: initialSection }) => {
     };
 
 return (
-    <header className={`flex flex-row top-0 w-full z-50 transition-all duration-300 ${
+    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg'
+          ? ' dark:bg-gray-900/90 backdrop-blur-md shadow-lg'
           : 'bg-transparent'
       }`}>
-        <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+        <nav className="mx-auto px-4 lg:px-8 flex items-center justify-between h-20 bg-linear-to-r from-black via-purple-800 to-black">
 
           {/* Logo */}
           <div
-            className="cursor-pointer font-semibold text-gray-700 dark:text-gray-300 text-lg"
+            className="cursor-pointer text-emerald-900 font-semibold text-3xl hover:text-emerald-500 transition-colors "
             onClick={() => scrollToSection('home')}
           >
             ~Karanis
           </div>
 
-          {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-8">
+         {/* Desktop Links */}
+          <div className="hidden md:flex items-center gap-20">
             {navitems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className={`transition-colors text-sm font-medium ${
+                className={`group relative font-bold  dark:text-green-700 text-xl transition-all duration-300 ${
                   activeSection === item.href.substring(1)
-                    ? 'text-blue-500 dark:text-blue-400 font-bold'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400'
+                    ? 'text-green-800 dark:text-green-300'
+                    : 'hover:text-green-800 dark:hover:text-green-300'
                 }`}
                 onClick={(e) => {
                   e.preventDefault()
@@ -89,22 +85,25 @@ return (
                   setActiveSection(item.href.substring(1))
                 }}
               >
-                {item.name}
+               
+                <span className="inline-block transition-transform duration-300 group-hover:scale-105">
+                  {item.name}
+                </span>
+                <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-linear-to-r from-green-600 to-emerald-500 dark:from-green-500 dark:to-emerald-400 transition-transform duration-300 origin-left ${
+                  activeSection === item.href.substring(1)
+                    ? ''
+                    : 'scale-x-0 group-hover:scale-x-100'
+                }`} />
+                <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md bg-green-500/20 dark:bg-green-400/20 -z-10 rounded-full" />
               </a>
             ))}
-            <button
-              onClick={toggleDarkMode}
-              className="ml-2 px-3 py-1.5 rounded-full text-sm bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-            >
-              {isDarkMode ? '☀️ Light' : '🌙 Dark'}
-            </button>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none"
+              className="p-2 rounded-md text-white hover:bg-white/10 focus:outline-none transition-colors"
             >
               <span className="sr-only">Open main menu</span>
               {isMenuOpen ? (
@@ -144,12 +143,6 @@ return (
                   {item.name}
                 </a>
               ))}
-              <button
-                onClick={toggleDarkMode}
-                className="mt-2 px-3 py-1.5 rounded-full text-sm bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-              >
-                {isDarkMode ? '☀️ Light' : '🌙 Dark'}
-              </button>
             </div>
           </div>
         )}

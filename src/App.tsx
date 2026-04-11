@@ -1,6 +1,7 @@
 // App.tsx
 import React, { useEffect, useState } from 'react';
-import Header from './components/header';
+import Header from './components/Header';
+import './App.css';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -29,7 +30,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-900">
+    <div className="bg-black dark:bg-black-900">
       <Header activeSection={activeSection} />
     </div>
   );
