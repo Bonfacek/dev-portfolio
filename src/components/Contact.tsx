@@ -1,43 +1,43 @@
 // Contact.tsx
 import React, { useState } from "react"
-import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp } from "react-icons/fa"
+import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp,FaReddit } from "react-icons/fa"
 import { MdEmail } from "react-icons/md"
 
 const socials = [
   {
     name: "GitHub",
     handle: "@karanis",
-    href: "https://github.com/karanis",
+    href: "https://github.com/Bonfacek",
     icon: <FaGithub size={22} />,
     color: "#ffffff",
   },
   {
     name: "LinkedIn",
     handle: "Karanis",
-    href: "https://linkedin.com/in/karanis",
+    href: "https://www.linkedin.com/in/karani-bonface-425968331/",
     icon: <FaLinkedin size={22} />,
     color: "#0a66c2",
   },
   {
     name: "Twitter",
     handle: "@karanis",
-    href: "https://twitter.com/karanis",
+    href: "https://x.com/karanis",
     icon: <FaTwitter size={22} />,
     color: "#1d9bf0",
   },
   {
     name: "WhatsApp",
-    handle: "+254 700 000 000",
-    href: "https://wa.me/254700000000",
+    handle: "+254 700 581 386",
+    href: "https://wa.me/254700581386",
     icon: <FaWhatsapp size={22} />,
     color: "#25d366",
   },
   {
-    name: "Email",
-    handle: "karanis@email.com",
-    href: "mailto:karanis@email.com",
-    icon: <MdEmail size={22} />,
-    color: "#ea4335",
+    name: "Reddit",
+    handle: "u/Karani-005",
+    href: "https://www.reddit.com/user/Karani-005/",
+    icon: <FaReddit size={22} />,
+    color: "#ff4509",
   },
 ]
 
@@ -51,7 +51,6 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Replace with your form handler e.g. EmailJS, Formspree
     setSent(true)
     setTimeout(() => setSent(false), 4000)
     setForm({ name: "", email: "", message: "" })
@@ -73,7 +72,7 @@ const Contact: React.FC = () => {
             <div className="h-px w-16 bg-emerald-800" />
           </div>
           <p className="text-white/40 mt-4 text-base">
-            Have a project in mind? Let's talk.
+            Have a project in mind? Let's actualize it.
           </p>
         </div>
 

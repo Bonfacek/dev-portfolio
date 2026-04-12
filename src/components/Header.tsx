@@ -60,7 +60,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection: initialSection }) => {
             style={{ border: "2px solid #10b981" }}
           >
             <img
-              src="/karanis.png"
+              src="/icon.png"
               alt="Karanis"
               className="w-full h-full object-cover"
             />

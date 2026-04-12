@@ -9,10 +9,10 @@ const projects = [
     github: "#",
   },
   {
-    title: "Project Two",
-    description: "Description of your second project. What problem did it solve? What did you build?",
-    tags: ["React", "TypeScript", "Tailwind"],
-    link: "#",
+    title: "Client Portfolio Website",
+    description: "Designed and developed a responsive portfolio website using HTML, Tailwind CSS, and deployed on Vercel. Implemented smooth scrolling, dark mode, and interactive project showcases.",
+    tags: ["HTML", "CSS", "Tailwind"],
+    link: "https://stalwart-dasik-7af5f3.netlify.app/",
     github: "#",
   },
   {

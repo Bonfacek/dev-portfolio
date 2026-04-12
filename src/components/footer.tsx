@@ -14,11 +14,11 @@ const Footer: React.FC = () => {
   ]
 
   const socials = [
-    { href: "https://github.com/karanis",      icon: <FaGithub size={18} />,   color: "#ffffff",  label: "GitHub"   },
-    { href: "https://linkedin.com/in/karanis", icon: <FaLinkedin size={18} />, color: "#0a66c2",  label: "LinkedIn" },
-    { href: "https://twitter.com/karanis",     icon: <FaTwitter size={18} />,  color: "#1d9bf0",  label: "Twitter"  },
-    { href: "https://wa.me/254700000000",      icon: <FaWhatsapp size={18} />, color: "#25d366",  label: "WhatsApp" },
-    { href: "mailto:karanis@email.com",        icon: <MdEmail size={18} />,    color: "#ea4335",  label: "Email"    },
+    { href: "https://github.com/Bonfacek",      icon: <FaGithub size={18} />,   color: "#ffffff",  label: "GitHub"   },
+    { href: "https://www.linkedin.com/in/karani-bonface-425968331/", icon: <FaLinkedin size={18} />, color: "#0a66c2",  label: "LinkedIn" },
+    { href: "https://x.com/karanis",     icon: <FaTwitter size={18} />,  color: "#1d9bf0",  label: "Twitter"  },
+    { href: "https://wa.me/254700581386",      icon: <FaWhatsapp size={18} />, color: "#25d366",  label: "WhatsApp" },
+    { href: "mailto:karaninjoroge005@gmail.com",        icon: <MdEmail size={18} />,    color: "#ea4335",  label: "Email"    },
   ]
 
   return (
@@ -95,20 +95,20 @@ const Footer: React.FC = () => {
             <h4 className="text-white/60 text-xs uppercase tracking-widest mb-4">Get in touch</h4>
             <div className="space-y-3">
               <a
-                href="mailto:karanis@email.com"
+                href="mailto:karaninjoroge005@gmail.com"
                 className="flex items-center gap-3 text-white/40 text-sm hover:text-emerald-400 transition-colors duration-200"
               >
                 <MdEmail size={15} className="text-emerald-600 flex-shrink-0" />
-                karanis@email.com
+                karaninjoroge005@gmail.com
               </a>
               <a
-                href="https://wa.me/254700000000"
+                href="https://wa.me/254700581386"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-white/40 text-sm hover:text-emerald-400 transition-colors duration-200"
               >
                 <FaWhatsapp size={15} className="text-emerald-600 flex-shrink-0" />
-                +254 700 000 000
+                +254 700 581 386
               </a>
             </div>
 
