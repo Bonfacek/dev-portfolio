@@ -13,19 +13,17 @@ const projects = [
     description: "Designed and developed a responsive portfolio website using HTML, Tailwind CSS, and deployed on Vercel. Implemented smooth scrolling, dark mode, and interactive project showcases.",
     tags: ["HTML", "CSS", "Tailwind"],
     link: "https://stalwart-dasik-7af5f3.netlify.app/",
-    github: "#",
   },
   {
-    title: "Project Three",
-    description: "Description of your third project. What technologies did you use?",
-    tags: ["Java", "Spring Boot", "MySQL"],
-    link: "#",
-    github: "#",
+    title: "School Management System",
+    description: "Participated in a group project to build a school management system where i specialized in handling authentification and rate limiting .",
+    tags: ["Java", "Spring Boot", ],
+    link: "https://smarteduops.com",
   },
 ]
 
 const stats = [
-  { label: "Projects Completed", value: "10+" },
+  { label: "Projects Completed", value: "5+" },
   { label: "Happy Clients",      value: "5+"  },
   { label: "Years Experience",   value: "3+"  },
 ]

@@ -74,6 +74,16 @@ const Hero: React.FC = () => {
             >
               View Work →
             </a>
+               <a
+              href="https://docs.google.com/document/d/12v7Bbg8de_FOitc7cMZbEoBcQszXhhr3ooAzxOOrIew/edit?usp=sharing"
+              className="px-6 py-3 text-white/60 text-sm font-medium rounded-lg transition-all duration-300 hover:text-white"
+              style={{
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.1)",
+              }}
+            >
+             See Resume →
+            </a>
           </div>
 
           {/* Stats */}
