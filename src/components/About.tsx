@@ -172,7 +172,7 @@ const About: React.FC = () => {
       id="about"
       className="min-h-screen flex flex-col items-center justify-start bg-gradient-to-r from-black via-emerald-950 to-black px-4 lg:px-10 py-20"
     >
-      <div className="text-center mb-10">
+      <div className="text-center mb-10 ">
         <h2 className="text-4xl font-bold text-emerald-400 mb-2">About Me</h2>
         <div className="flex items-center justify-center gap-2 mt-2">
           <div className="h-px w-16 bg-emerald-800" />
@@ -181,7 +181,7 @@ const About: React.FC = () => {
         </div>
       </div>
 
-      <div className="max-w-4xl w-full mb-16">
+      <div className="max-w-7xl w-full mb-16">
         <p className="text-white/70 text-lg leading-relaxed font-medium">
           I'm{" "}
           <span className="text-emerald-400 font-semibold">Karanis</span>, a
