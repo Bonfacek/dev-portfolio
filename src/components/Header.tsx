@@ -1,153 +1,171 @@
-import React, {useState , useEffect} from "react";
+
+import React, { useState, useEffect } from "react"
 
 interface HeaderProps {
-    activeSection: string;
+  activeSection: string
 }
 
 const Header: React.FC<HeaderProps> = ({ activeSection: initialSection }) => {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
-    const [activeSection, setActiveSection] = useState(initialSection);
-    const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState(initialSection)
 
-    const navitems = [
-        { name: "Home", href: "#home" },
-        { name: "About", href: "#about" },
-        { name: "Projects", href: "#projects" },
-        { name: "Contact", href: "#contact" },
-    ];
+  const navItems = [
+    { name: "Home",         href: "#home"         },
+    { name: "About",        href: "#about"        },
+    { name: "Projects",     href: "#projects"     },
+    { name: "Testimonials", href: "#testimonials" },
+    { name: "Contact",      href: "#contact"      },
+  ]
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+  // Scroll detection — updates active section based on which section is in view
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+      const sectionIds = navItems.map((item) => item.href.substring(1))
+      const current = sectionIds.find((id) => {
+        const el = document.getElementById(id)
+        if (!el) return false
+        const rect = el.getBoundingClientRect()
+        return rect.top <= 100 && rect.bottom >= 100
+      })
+      if (current) setActiveSection(current)
+    }
 
-    useEffect(() => {
-        if (isDarkMode){
-            document.documentElement.classList.add('dark');
-        }else {
-            document.documentElement.classList.remove('dark');
-        }
-    }, [isDarkMode]);
-    
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
-    const scrollToSection = (sectionid: string) => {
-        const section = document.getElementById(sectionid);
-        if (section) {
-            section.scrollIntoView({ behavior: "smooth" });
-        }
-    };
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
-return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? ' dark:bg-gray-900/90 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
-      }`}>
-        <nav className="mx-auto px-4 lg:px-8 flex items-center justify-between h-20 bg-linear-to-r from-black via-green-950 to-black">
+  const scrollToSection = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" })
+    setIsMenuOpen(false)
+  }
 
-          {/* Logo */}
+  return (
+    <header
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? "backdrop-blur-md shadow-lg" : ""
+      }`}
+    >
+      <nav className="mx-auto px-4 lg:px-8 flex items-center justify-between h-16 bg-gradient-to-r from-black via-emerald-800 to-black">
+
+        {/* Logo */}
+        <div
+          className="flex items-center gap-2 cursor-pointer"
+          onClick={() => scrollToSection("home")}
+        >
           <div
-            className="cursor-pointer text-emerald-900 font-semibold text-3xl hover:text-emerald-500 transition-colors "
-            onClick={() => scrollToSection('home')}
+            className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0"
+            style={{ border: "2px solid #10b981" }}
           >
-            ~Karanis
+            <img
+              src="/karanis.png"
+              alt="Karanis"
+              className="w-full h-full object-cover"
+            />
           </div>
+          <span className="text-emerald-400 font-bold text-3xl hover:text-emerald-300 transition-colors">
+            ~Karanis
+          </span>
+        </div>
 
-         {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-20">
-            {navitems.map((item) => (
+        {/* Desktop Links */}
+        <div className="hidden md:flex items-center gap-10">
+          {navItems.map((item) => {
+            const isActive = activeSection === item.href.substring(1)
+            return (
               <a
                 key={item.name}
                 href={item.href}
-                className={`group relative font-bold  dark:text-green-700 text-xl transition-all duration-300 ${
-                  activeSection === item.href.substring(1)
-                    ? 'text-green-800 dark:text-green-300'
-                    : 'hover:text-green-800 dark:hover:text-green-300'
-                }`}
                 onClick={(e) => {
                   e.preventDefault()
                   scrollToSection(item.href.substring(1))
                   setActiveSection(item.href.substring(1))
                 }}
+                className="group relative text-xl font-bold transition-all duration-300"
+                style={{ color: isActive ? "#10b981" : "rgba(255,255,255,0.5)" }}
               >
-               
-                <span className="inline-block transition-transform duration-300 group-hover:scale-105">
+                <span className="inline-block transition-transform duration-200 group-hover:scale-105">
                   {item.name}
                 </span>
-                <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-linear-to-r from-green-600 to-emerald-500 dark:from-green-500 dark:to-emerald-400 transition-transform duration-300 origin-left ${
-                  activeSection === item.href.substring(1)
-                    ? ''
-                    : 'scale-x-0 group-hover:scale-x-100'
-                }`} />
-                <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md bg-green-500/20 dark:bg-green-400/20 -z-10 rounded-full" />
+
+                {/* Animated underline */}
+                <span
+                  className="absolute -bottom-1 left-0 h-0.5 rounded-full transition-all duration-300 origin-left"
+                  style={{
+                    width: isActive ? "100%" : "0%",
+                    background: "linear-gradient(to right, #059669, #10b981)",
+                  }}
+                />
+
+                {/* Hover underline for non-active */}
+                {!isActive && (
+                  <span
+                    className="absolute -bottom-1 left-0 w-0 h-0.5 rounded-full group-hover:w-full transition-all duration-300"
+                    style={{ background: "rgba(16,185,129,0.4)" }}
+                  />
+                )}
               </a>
-            ))}
-          </div>
+            )
+          })}
+        </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button
-              onClick={toggleMenu}
-              className="p-2 rounded-md text-white hover:bg-white/10 focus:outline-none transition-colors"
-            >
-              <span className="sr-only">Open main menu</span>
-              {isMenuOpen ? (
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
-          </div>
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden p-2 rounded-md text-white/70 hover:text-white hover:bg-white/10 transition-colors focus:outline-none"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <span className="sr-only">Open main menu</span>
+          {isMenuOpen ? (
+            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          )}
+        </button>
+      </nav>
 
-        </nav>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 shadow-lg">
-            <div className="flex flex-col items-center gap-4 py-6 px-4">
-              {navitems.map((item) => (
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div
+          className="md:hidden border-t"
+          style={{
+            background: "linear-gradient(to bottom, #0a0f1e, #080810)",
+            borderColor: "rgba(16,185,129,0.15)",
+          }}
+        >
+          <div className="flex flex-col px-4 py-4 gap-1">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href.substring(1)
+              return (
                 <a
                   key={item.name}
                   href={item.href}
-                  className={`text-sm font-medium transition-colors ${
-                    activeSection === item.href.substring(1)
-                      ? 'text-blue-500 dark:text-blue-400 font-bold'
-                      : 'text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400'
-                  }`}
                   onClick={(e) => {
                     e.preventDefault()
                     scrollToSection(item.href.substring(1))
                     setActiveSection(item.href.substring(1))
-                    setIsMenuOpen(false)
+                  }}
+                  className="px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200"
+                  style={{
+                    color: isActive ? "#10b981" : "rgba(255,255,255,0.5)",
+                    background: isActive ? "rgba(16,185,129,0.08)" : "transparent",
+                    borderLeft: isActive ? "2px solid #10b981" : "2px solid transparent",
                   }}
                 >
                   {item.name}
                 </a>
-              ))}
-            </div>
+              )
+            })}
           </div>
-        )}
-      </header>
-  );
-};
+        </div>
+      )}
+    </header>
+  )
+}
 
-export default Header;
+export default Header
