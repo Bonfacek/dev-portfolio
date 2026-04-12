@@ -1,4 +1,5 @@
 // Contact.tsx
+import { send } from "@emailjs/browser";
 import React, { useState } from "react"
 import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp,FaReddit } from "react-icons/fa"
 import { MdEmail } from "react-icons/md"
@@ -54,6 +55,12 @@ const Contact: React.FC = () => {
     setSent(true)
     setTimeout(() => setSent(false), 4000)
     setForm({ name: "", email: "", message: "" })
+    send(
+      "service_tnneiy9", 
+      "template_0vtl27v", 
+      form,
+      "urY3iXMbeV-nwdEmo" 
+    ).catch((err) => console.error("EmailJS error:", err))
   }
 
   return (
