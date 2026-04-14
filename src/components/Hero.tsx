@@ -161,7 +161,7 @@ const Hero: React.FC = () => {
             }}
           >
             <img
-              src={`${import.meta.env.BASE_URL}icon.png`}
+              src="/dev-portfolio/icon.png"
               alt="Karanis"
               className="w-full h-full object-cover"
             />
