@@ -116,8 +116,8 @@ const Hero: React.FC = () => {
             className="absolute rounded-full animate-ping"
             style={{
               width: "420px", height: "420px",
-              border: "1px solid rgba(16,185,129,0.1)",
-              animationDuration: "3s",
+              border: "2px solid rgba(16,185,129,0.1)",
+              animationDuration: "2s",
             }}
           />
           <div
