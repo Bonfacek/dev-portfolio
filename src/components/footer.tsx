@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
                 style={{ border: "2px solid #10b981" }}
               >
                 <img
-                  src="/karanis.png"
+                  src="/dev-portfolio/icon.png"
                   alt="Karanis"
                   className="w-full h-full object-cover"
                 />

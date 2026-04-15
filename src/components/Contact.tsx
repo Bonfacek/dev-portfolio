@@ -2,7 +2,7 @@
 import { send } from "@emailjs/browser";
 import React, { useState } from "react"
 import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp,FaReddit } from "react-icons/fa"
-import { MdEmail } from "react-icons/md"
+
 
 const socials = [
   {

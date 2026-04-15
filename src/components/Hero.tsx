@@ -3,7 +3,7 @@ import { FaReact, FaJava, FaDocker } from "react-icons/fa"
 import { SiNextdotjs, SiSpringboot, SiMongodb } from "react-icons/si"
 
 const stats = [
-  { value: "1+",  label: "Years\nExperience" },
+  { value: "3+",  label: "Years\nExperience" },
   { value: "5+", label: "Projects\nCompleted" },
   { value: "3+", label: "Technologies" },
   { value: "100%", label: "Client\nSatisfaction" },
@@ -161,7 +161,7 @@ const Hero: React.FC = () => {
             }}
           >
             <img
-              src="/icon.png"
+              src="/dev-portfolio/icon.png"
               alt="Karanis"
               className="w-full h-full object-cover"
             />
