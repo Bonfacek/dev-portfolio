@@ -5,8 +5,8 @@ const projects = [
     title: "JawaTech Platform",
     description: "Full stack engineering platform with JWT auth, Redis blacklisting, Spring Boot backend and Next.js frontend.",
     tags: ["Next.js", "Spring Boot", "Redis", "JWT"],
-    link: "#",
-    github: "#",
+    link: "https://jawatech.lads.sc.ke/",
+    
   },
   {
     title: "Client Portfolio Website",
@@ -124,12 +124,6 @@ const Project: React.FC = () => {
                   className="text-emerald-500 hover:text-emerald-400 font-medium transition-colors"
                 >
                   Live →
-                </a>
-                <a                
-                  href={project.github}
-                  className="text-white/40 hover:text-white/70 transition-colors"
-                >
-                  GitHub
                 </a>
               </div>
             </div>
