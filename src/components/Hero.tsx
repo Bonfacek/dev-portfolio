@@ -3,7 +3,7 @@ import { FaReact, FaJava, FaDocker } from "react-icons/fa"
 import { SiNextdotjs, SiSpringboot, SiMongodb } from "react-icons/si"
 
 const stats = [
-  { value: "3+",   label: "Years\nExperience"    },
+  { value: "1+",   label: "Years\nExperience"    },
   { value: "5+",   label: "Projects\nCompleted"  },
   { value: "3+",   label: "Technologies"         },
   { value: "100%", label: "Client\nSatisfaction" },
@@ -18,7 +18,11 @@ const techIcons = [
   { icon: <FaDocker size={16} />,     color: "#2496ed", label: "Docker"  },
 ]
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onViewRates?: () => void
+}
+
+const Hero: React.FC<HeroProps> = ({ onViewRates }) => {
   return (
     <section
       id="home"
@@ -79,7 +83,7 @@ const Hero: React.FC = () => {
               View Work →
             </a>
             <a
-              href="https://docs.google.com/document/d/12v7Bbg8de_FOitc7cMZbEoBcQszXhhr3ooAzxOOrIew/edit?usp=sharing"
+              href="https://docs.google.com/document/d/1CgmYN8ksjjn5eno02yB8zepF1jqoWKtx1FJaSunZ4PY/edit?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="px-5 py-2.5 text-white/60 text-sm font-medium rounded-lg transition-colors hover:text-white"
@@ -90,6 +94,17 @@ const Hero: React.FC = () => {
             >
               Resume →
             </a>
+            <button
+              onClick={onViewRates}
+              className="px-5 py-2.5 text-white/60 text-sm font-medium rounded-lg transition-colors hover:text-white"
+              style={{
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.1)",
+              }}
+            >
+              Rates →
+            </button>
+
           </div>
 
           {/* Stats */}

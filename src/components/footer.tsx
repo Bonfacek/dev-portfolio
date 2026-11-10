@@ -2,7 +2,11 @@ import React from "react"
 import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp } from "react-icons/fa"
 import { MdEmail } from "react-icons/md"
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onViewRates?: () => void
+}
+
+const Footer: React.FC<FooterProps> = ({ onViewRates }) => {
   const year = new Date().getFullYear()
 
   const navLinks = [
@@ -57,15 +61,31 @@ const Footer: React.FC = () => {
               Full stack developer building modern web applications with clean code and great user experiences.
             </p>
 
-            <div
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full w-fit text-xs"
-              style={{
-                background: "rgba(16,185,129,0.08)",
-                border: "1px solid rgba(16,185,129,0.2)",
-              }}
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-emerald-400">Available for work</span>
+            <div className="flex flex-row gap-3">
+              {/* Available for work pill */}
+              <div
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full w-fit text-xs"
+                style={{
+                  background: "rgba(16,185,129,0.08)",
+                  border: "1px solid rgba(16,185,129,0.2)",
+                }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-emerald-400">Available for work</span>
+              </div>
+
+              {/* View rates pill -> switches App's currentView to 'rates' */}
+              <button
+                onClick={onViewRates}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full w-fit text-xs hover:bg-emerald-500/10 transition-colors duration-200"
+                style={{
+                  background: "rgba(16,185,129,0.08)",
+                  border: "1px solid rgba(16,185,129,0.2)",
+                }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-emerald-400">view rates</span>
+              </button>
             </div>
           </div>
 
@@ -157,7 +177,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-      </div>{/* ✅ closes max-w-5xl */}
+      </div>
     </footer>
   )
 }

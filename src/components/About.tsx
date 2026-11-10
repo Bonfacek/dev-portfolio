@@ -186,7 +186,7 @@ const About: React.FC = () => {
           I'm{" "}
           <span className="text-emerald-400 font-semibold">Karanis</span>, a
           passionate full-stack developer with a knack for crafting seamless web
-          applications. With a strong foundation and over 5 years of experience in both front-end and back-end
+          applications. With a strong foundation and over 1+ years of experience in both front-end and back-end
           technologies, I specialize in modern web development and cyber systems.
           My journey in coding began with a curiosity for how websites work,
           which quickly evolved into a deep passion for creating digital
