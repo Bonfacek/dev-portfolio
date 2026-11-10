@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://github.io
+Sitemap: https://bonfacek.github.io/dev-portfolio/sitemap.xml
